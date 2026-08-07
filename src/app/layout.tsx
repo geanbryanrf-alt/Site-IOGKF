@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kenzenichinyu.com.br"),
   title: "Ken Zen Ichinyō 2027 | Karate and Zen as One",
   description: "Live four days of immersion in traditional Okinawan Goju-Ryu Karate and authentic Soto Zen practice at the Morro da Vargem Zen Monastery, in Espírito Santo, Brazil.",
+  icons: {
+    icon: "/imagens/logo-iogkf.png",
+    shortcut: "/imagens/logo-iogkf.png",
+    apple: "/imagens/logo-iogkf.png",
+  },
   openGraph: {
     title: "Ken Zen Ichinyō 2027 | Karate and Zen as One",
     description: "Live four days of immersion in traditional Okinawan Goju-Ryu Karate and authentic Soto Zen practice at the Morro da Vargem Zen Monastery, in Espírito Santo, Brazil.",
@@ -28,6 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/imagens/logo-iogkf.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/imagens/logo-iogkf.png" />
+      </head>
       <body className={`${inter.variable} ${montserrat.variable} ${notoSerifJP.variable}`} suppressHydrationWarning>
         <LanguageProvider>{children}</LanguageProvider>
       </body>
