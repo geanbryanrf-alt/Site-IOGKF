@@ -176,66 +176,8 @@ export const eventoData = {
     ],
   },
   inscricao: {
+    // Mínimo de manifestações de interesse que confirma o evento. Aparece
+    // nos textos da seção "Manifestação de Interesse".
     minimoParticipantes: 50,
-    // Número de pessoas que já manifestaram interesse / se inscreveram.
-    // Alimenta o contador discreto exibido na Hero.
-    // TODO: SUBSTITUIR PELO NÚMERO REAL antes de publicar o site — o valor
-    // abaixo é apenas um placeholder para visualizar o componente.
-    // Defina como `null` para esconder o contador por completo.
-    inscritosAtuais: 37 as number | null,
-
-    // ============================================================
-    // NOTIFICAÇÕES DE INSCRIÇÃO (prova social)
-    // Alimentam os avisos discretos que surgem no canto inferior
-    // esquerdo do site (componente NotificacoesInscricao).
-    //
-    // ⚠️ ATENÇÃO — LEIA ANTES DE PUBLICAR:
-    //
-    // 1. Todo item marcado com `exemplo: true` é fictício e existe
-    //    apenas para você visualizar o layout. Eles só aparecem no site
-    //    enquanto `demonstracao` for `true`.
-    //    TROQUE `demonstracao` PARA `false` ANTES DE PUBLICAR: os
-    //    exemplos somem sozinhos e ficam apenas as inscrições reais.
-    //
-    // 2. Preencha `itens` somente com inscrições REAIS. Exibir nomes
-    //    inventados como se fossem pessoas inscritas é publicidade
-    //    enganosa (CDC, arts. 36-37) e destrói a confiança no evento
-    //    se alguém perceber.
-    //
-    // 3. Peça autorização à pessoa antes de exibir o nome dela, e
-    //    prefira o formato "Primeiro nome + inicial" (ex.: "Marina L.").
-    //    Nunca publique e-mail, telefone ou nome completo aqui.
-    //
-    // Como manter: a cada nova inscrição confirmada no formulário,
-    // acrescente um item no TOPO da lista e remova os mais antigos
-    // (a lista rende bem com 5 a 10 itens).
-    //
-    // `em` é a data/hora da inscrição em ISO 8601. O site converte
-    // sozinho para "há 2 horas" / "2 hours ago" no idioma do visitante.
-    // ============================================================
-    inscricoesRecentes: {
-      demonstracao: true, // TODO: mudar para false antes de publicar
-      itens: [
-        // --- Inscrições reais entram aqui, a mais recente no topo ---
-        //   { nome: "Fulano S.", cidade: "Vitória — ES", em: "2027-02-10T14:30:00-03:00" },
-
-        // --- Exemplos fictícios: somem quando `demonstracao` vira false ---
-        // Usam `minutosAtras` em vez de `em` para nunca ficarem desatualizados
-        // durante a visualização. Em inscrições reais, use sempre `em`.
-        { nome: 'Marina L.', cidade: 'São Paulo — SP', minutosAtras: 12, exemplo: true },
-        { nome: 'Ricardo A.', cidade: 'Vitória — ES', minutosAtras: 47, exemplo: true },
-        { nome: 'Paolo B.', cidade: 'Roma — Itália', minutosAtras: 180, exemplo: true },
-        { nome: 'Camila S.', cidade: 'Belo Horizonte — MG', minutosAtras: 400, exemplo: true },
-        { nome: 'Eduardo M.', cidade: 'Curitiba — PR', minutosAtras: 1500, exemplo: true },
-      ] as {
-        nome: string;
-        cidade: string;
-        /** Data/hora ISO 8601 da inscrição real. */
-        em?: string;
-        /** Só para exemplos: quantos minutos atrás, contados na hora da visita. */
-        minutosAtras?: number;
-        exemplo?: boolean;
-      }[],
-    },
   },
 };

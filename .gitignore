@@ -11,6 +11,9 @@
 # next.js
 /.next/
 /out/
+# Build antigo, guardado na raiz. Nao entra no repositorio: sao ~29 MB que
+# ficariam no historico para sempre. Pode apagar a pasta quando quiser.
+/out.antigo/
 
 # production
 /build

@@ -28,21 +28,6 @@ const en = {
       'For centuries, Karate and Zen have walked the same path. Over four days, that path can be lived in its most authentic form.',
     ctaPrimary: 'Reserve your spot',
     ctaSecondary: 'Discover the experience',
-    // Linha de progresso das inscrições, logo abaixo dos dois CTAs.
-    progresso: {
-      interested: '{count} have already expressed interest',
-      remaining: '{count} more to secure the event',
-      remainingSingular: '1 more to secure the event',
-      confirmed: 'Minimum reached — the event is confirmed',
-      barLabel: 'Progress toward the {min} expressions of interest needed to confirm the event',
-    },
-  },
-  notificacoesInscricao: {
-    kicker: 'New registration',
-    action: 'has just expressed interest',
-    from: 'from',
-    cta: 'Join them',
-    dismiss: 'Dismiss notification',
   },
   secaoESe: {
     title: 'What If...',
@@ -400,21 +385,6 @@ const pt: DeepEnglish = {
       'Há séculos, o Karatê e o Zen percorrem o mesmo caminho. Durante quatro dias, esse caminho poderá ser vivido em sua forma mais autêntica.',
     ctaPrimary: 'Reserve sua vaga',
     ctaSecondary: 'Conheça a experiência',
-    // Linha de progresso das inscrições, logo abaixo dos dois CTAs.
-    progresso: {
-      interested: '{count} já manifestaram interesse',
-      remaining: 'faltam {count} para confirmar o evento',
-      remainingSingular: 'falta 1 para confirmar o evento',
-      confirmed: 'Mínimo atingido — evento confirmado',
-      barLabel: 'Progresso rumo às {min} manifestações de interesse necessárias para confirmar o evento',
-    },
-  },
-  notificacoesInscricao: {
-    kicker: 'Nova inscrição',
-    action: 'acabou de manifestar interesse',
-    from: 'de',
-    cta: 'Participe também',
-    dismiss: 'Fechar notificação',
   },
   secaoESe: {
     title: 'E Se...',

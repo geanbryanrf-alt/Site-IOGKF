@@ -30,12 +30,15 @@ const ITENS_IGNORADOS = [
   'letra_oficial.png',
 ];
 
-function copiarRecursivo(src, dest) {
-  if (!fs.existsSync(dest)) {
-    fs.mkdirSync(dest, { recursive: true });
-    console.log(`✓ Criada pasta: ${dest}`);
-  }
+// Só imagem vai para dentro do site. Tudo que está em public/ fica baixável
+// por qualquer visitante, então um briefing, PDF ou planilha deixado em
+// imagens/ viraria arquivo público sem ninguém perceber. Esses ficam apenas
+// no projeto, onde devem estar.
+const EXTENSOES_DE_IMAGEM = new Set([
+  '.jpg', '.jpeg', '.jfif', '.png', '.webp', '.gif', '.svg', '.avif', '.ico',
+]);
 
+function copiarRecursivo(src, dest) {
   const itens = fs.readdirSync(src);
   for (const item of itens) {
     const caminhoSrc = path.join(src, item);
@@ -51,10 +54,24 @@ function copiarRecursivo(src, dest) {
 
     if (stat.isDirectory()) {
       copiarRecursivo(caminhoSrc, caminhoDest);
-    } else {
-      fs.copyFileSync(caminhoSrc, caminhoDest);
-      console.log(`  → Copiado: ${item}`);
+      continue;
     }
+
+    if (!EXTENSOES_DE_IMAGEM.has(path.extname(item).toLowerCase())) {
+      console.log(`  ⏭ Ignorado (não é imagem, não vai para o site): ${relativo}`);
+      continue;
+    }
+
+    // A pasta de destino só nasce quando há de fato uma imagem para pôr
+    // dentro dela — assim uma pasta só de documentos não deixa um diretório
+    // vazio em public/imagens/.
+    if (!fs.existsSync(dest)) {
+      fs.mkdirSync(dest, { recursive: true });
+      console.log(`✓ Criada pasta: ${dest}`);
+    }
+
+    fs.copyFileSync(caminhoSrc, caminhoDest);
+    console.log(`  → Copiado: ${item}`);
   }
 }
 

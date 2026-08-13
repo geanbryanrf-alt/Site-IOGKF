@@ -19,7 +19,6 @@ import SecaoContato from '@/components/SecaoContato';
 import ChamadaFinal from '@/components/ChamadaFinal';
 import Footer from '@/components/Footer';
 import BotaoInscricaoFixo from '@/components/BotaoInscricaoFixo';
-import NotificacoesInscricao from '@/components/NotificacoesInscricao';
 
 export default function Home() {
   return (
@@ -45,7 +44,6 @@ export default function Home() {
       <ChamadaFinal />
       <Footer />
       <BotaoInscricaoFixo />
-      <NotificacoesInscricao />
     </main>
   );
 }

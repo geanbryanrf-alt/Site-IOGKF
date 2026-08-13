@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { eventoData } from '@/data/evento';
 import { useLanguage } from '@/i18n/LanguageContext';
-import ContadorInscritos from './ContadorInscritos';
 
 const SLIDE_DURATION = 6000;
 
@@ -141,12 +140,6 @@ export default function Hero() {
             {t.hero.ctaSecondary}
           </a>
         </motion.div>
-
-        {/* Progresso das inscrições, logo abaixo dos CTAs */}
-        <ContadorInscritos
-          delay={1.2}
-          className="mt-5 sm:mt-6 w-full [text-shadow:0_1px_3px_rgb(0_0_0/0.9)]"
-        />
       </div>
     </section>
   );

@@ -1,0 +1,76 @@
+# ============================================================
+# Ken Zen Ichinyo 2027 - configuracao do servidor
+# ------------------------------------------------------------
+# Vale para Hostinger, cPanel e qualquer servidor Apache/LiteSpeed.
+# Cada trecho esta dentro de um bloco <IfModule>: se a hospedagem
+# nao tiver aquele recurso, o bloco e ignorado e o site continua
+# funcionando normalmente.
+#
+# Este arquivo sobe junto com o site, dentro da public_html.
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Pagina de erro do proprio site, no lugar da tela padrao do servidor
+# ------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+
+# ------------------------------------------------------------
+# Compressao - reduz bastante o tamanho do que trafega e deixa
+# o site visivelmente mais rapido. Imagens ficam de fora porque
+# JPEG/PNG/WebP ja sao comprimidos.
+# ------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+
+# ------------------------------------------------------------
+# Cache - quem volta ao site nao baixa tudo de novo.
+# Fotos, CSS e JS podem ficar guardados por muito tempo porque o
+# Next.js gera nomes de arquivo unicos a cada build: quando algo
+# muda, o nome muda junto e o navegador busca a versao nova.
+# O HTML e a excecao: precisa ser conferido sempre, senao uma
+# alteracao publicada demora a aparecer para quem ja visitou.
+# ------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  ExpiresByType image/jpeg              "access plus 1 year"
+  ExpiresByType image/png               "access plus 1 year"
+  ExpiresByType image/webp              "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 1 year"
+  ExpiresByType image/x-icon            "access plus 1 year"
+
+  ExpiresByType font/woff2              "access plus 1 year"
+  ExpiresByType font/woff               "access plus 1 year"
+
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType text/javascript         "access plus 1 year"
+  ExpiresByType application/javascript  "access plus 1 year"
+
+  ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+
+# ------------------------------------------------------------
+# HTTPS (cadeado no navegador)
+# ------------------------------------------------------------
+# ATENCAO: so descomente as 5 linhas abaixo DEPOIS que o certificado
+# SSL estiver ativo no painel da hospedagem. Se ligar antes, o site
+# fica inacessivel ate o certificado sair.
+#
+# Para ativar, apague o "#" do inicio de cada uma das 5 linhas:
+#
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
